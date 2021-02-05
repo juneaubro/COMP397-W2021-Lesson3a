@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: tile2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
 --- !u!1 &705507993
@@ -450,6 +458,14 @@ PrefabInstance:
     - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
       propertyPath: m_Name
       value: tile2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
@@ -829,6 +845,14 @@ PrefabInstance:
     - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
       propertyPath: m_Name
       value: tile2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468318766310880007, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fa7b6be4fe8e3740a7ad97a242da9fc, type: 3}
