@@ -7,18 +7,25 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundMask;
 
+    [Header("Movement Properties")]
     [SerializeField]
     private float maxSpeed = 10f;
     [SerializeField]
     private float gravity = -30f;
     [SerializeField]
     private float jumpHeight = 3f;
+
+    [Header("Ground Detection Properties")]
     [SerializeField]
     private bool isGrounded;
     [SerializeField]
     private float groundRadius = 0.5f;
 
+    [Header("MiniMap")]
+    [SerializeField] private GameObject MiniMap;
+
     private Vector3 velocity;
+    private bool toggle = true;
 
     CharacterController controller;
 
@@ -51,6 +58,13 @@ public class PlayerController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            MiniMap.SetActive(toggle);
+
+            toggle = !toggle;
+        }
     }
 
     private void OnDrawGizmos()
