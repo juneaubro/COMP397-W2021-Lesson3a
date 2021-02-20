@@ -5,13 +5,15 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
-    public Transform player;
+    Transform player;
 
     NavMeshAgent agent;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        player = GameObject.Find("Player").transform;
     }
 
     private void Update()
