@@ -21,17 +21,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float groundRadius = 0.5f;
 
-    [Header("MiniMap")]
-    [SerializeField] private GameObject MiniMap;
+    private GameObject MiniMap;
 
     private Vector3 velocity;
-    private bool toggle = true;
+    private bool toggle = false;
 
     CharacterController controller;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        MiniMap = GameObject.Find("MiniMapCanvas");
     }
 
     void Update()
