@@ -22,15 +22,7 @@ public class HealthBarScreenSpaceController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reset();
-        }
+        
     }
 
     public void TakeDamage(int damage)

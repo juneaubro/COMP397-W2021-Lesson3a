@@ -21,12 +21,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float groundRadius = 0.5f;
 
+    [Header("Player Sounds")]
+    public AudioSource jumpSound;
+    public AudioSource hitSound;
+
+    [Header("HealthBar")]
+    public HealthBarScreenSpaceController healthbar;
+
+    [Header("Player Abilities")]
+    [Range(0, 100)]
+    public static int health = 100;
+
     private GameObject MiniMap;
 
     private Vector3 velocity;
     private bool toggle = false;
 
-    CharacterController controller;
+    public static CharacterController controller;
 
     void Start()
     {
@@ -54,6 +65,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            jumpSound.Play();
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -72,5 +84,12 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireSphere(groundCheck.position, groundRadius);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        healthbar.TakeDamage(damage);
+        hitSound.Play();
     }
 }
