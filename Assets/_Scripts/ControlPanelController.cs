@@ -9,8 +9,8 @@ public class ControlPanelController : MonoBehaviour
     public float timer;
     public bool isOnScreen = false;
 
-    private Vector2 offScreenPos;
-    private Vector2 onScreenPos;
+    public Vector2 offScreenPos;
+    public Vector2 onScreenPos;
 
     RectTransform rectTransform;
     public CameraController playerCam;
@@ -29,7 +29,7 @@ public class ControlPanelController : MonoBehaviour
 
         rectTransform.anchoredPosition = offScreenPos;
 
-        onScreenPos = new Vector2(220.0f, -160.0f);
+        onScreenPos = new Vector2(470.0f, -342.0f);
 
         timer = 0.0f;
     }
@@ -46,19 +46,19 @@ public class ControlPanelController : MonoBehaviour
 
         if (isOnScreen)
         {
-            Cursor.lockState = CursorLockMode.None;
+            
             playerCam.enabled = false;
             MoveControlPanelDown();
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            
             playerCam.enabled = true;
             MoveControlPanelUp();
         }
     }
 
-    private void MoveControlPanelDown()
+    public void MoveControlPanelDown()
     {
         rectTransform.anchoredPosition = Vector2.Lerp(offScreenPos, onScreenPos, timer);
         if(timer < 1.0f)
@@ -67,7 +67,7 @@ public class ControlPanelController : MonoBehaviour
         }
     }
 
-    private void MoveControlPanelUp()
+    public void MoveControlPanelUp()
     {
         rectTransform.anchoredPosition = Vector2.Lerp(onScreenPos, offScreenPos, timer);
         if (timer < 1.0f)
