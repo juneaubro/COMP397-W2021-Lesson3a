@@ -111,6 +111,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetHealth(int hp)
+    {
+        health = hp;
+    }
+
     public void OnJumpButtonPressed()
     {
         if (isGrounded)
