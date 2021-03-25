@@ -30,21 +30,19 @@ public class CryptoBehaviour : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         playerC = FindObjectOfType<PlayerController>();
+        Player = GameObject.Find("Player");
     }
 
     private void FixedUpdate()
     {
-
-        player = new Vector3(GameObject.Find("Player").transform.position.x, GameObject.Find("Player").transform.position.y, GameObject.Find("Player").transform.position.z);
-
         if (hasLOS)
         {
-            agent.SetDestination(player);
+            agent.SetDestination(Player.transform.position);
             anim.SetInteger("AnimState", (int)CryptoState.RUN);
 
-            if (Vector3.Distance(player, transform.position) < distance)
+            if (Vector3.Distance(Player.transform.position, transform.position) < distance)
             {
-                transform.LookAt(player - new Vector3(0f, 1.381f, 0f));
+                transform.LookAt(Player.transform.position - new Vector3(0f, 1.381f, 0f));
 
                 anim.SetInteger("AnimState", (int)CryptoState.KICK);
 
@@ -82,13 +80,13 @@ public class CryptoBehaviour : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            hasLOS = false;
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Player"))
+    //    {
+    //        hasLOS = false;
+    //    }
+    //}
     IEnumerator Kick()
     {
 

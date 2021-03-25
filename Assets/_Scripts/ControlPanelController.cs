@@ -21,6 +21,7 @@ public class ControlPanelController : MonoBehaviour
     public CameraController playerCam;
 
     public Pause pause;
+    public GameObject cam;
 
     [Header("Scene Data")]
     public SceneDataSO sceneData;
@@ -42,11 +43,13 @@ public class ControlPanelController : MonoBehaviour
         rectTransform.anchoredPosition = offScreenPos;
 
         timer = 0.0f;
+
+        GetSceneData();
     }
 
     private void Update()
     {
-        if (clicked)
+        if (clicked)    
         {
             clicked = false;
             playerCam.enabled = isOnScreen;
@@ -104,6 +107,8 @@ public class ControlPanelController : MonoBehaviour
         player.transform.rotation = sceneData.playerRotation;
         player.GetComponent<CharacterController>().enabled = true;
 
+        cam.transform.localRotation = sceneData.cameraRotation;
+
         player.SetHealth(sceneData.playerHealth);
     }
 
@@ -111,6 +116,37 @@ public class ControlPanelController : MonoBehaviour
     {
         sceneData.playerPosition = player.transform.position;
         sceneData.playerHealth = player.health;
-        sceneData.playerRotation = player.transform.localRotation;
+        sceneData.playerRotation = player.transform.rotation;
+        sceneData.cameraRotation = cam.transform.localRotation;
+
+        SetSceneData();
+    }
+
+    public void GetSceneData()
+    {
+        sceneData.playerPosition.x = PlayerPrefs.GetFloat("ptx");
+        sceneData.playerPosition.y = PlayerPrefs.GetFloat("pty");
+        sceneData.playerPosition.z = PlayerPrefs.GetFloat("ptz");
+
+        sceneData.playerRotation.x = PlayerPrefs.GetFloat("prx");
+        sceneData.playerRotation.y = PlayerPrefs.GetFloat("pry");
+        sceneData.playerRotation.z = PlayerPrefs.GetFloat("prz");
+        sceneData.playerRotation.w = PlayerPrefs.GetFloat("prw");
+
+        sceneData.playerHealth = PlayerPrefs.GetInt("php");
+    }
+
+    public void SetSceneData()
+    {
+        PlayerPrefs.SetFloat("ptx", sceneData.playerPosition.x);
+        PlayerPrefs.SetFloat("pty", sceneData.playerPosition.y);
+        PlayerPrefs.SetFloat("ptz", sceneData.playerPosition.z);
+
+        PlayerPrefs.SetFloat("prx", sceneData.playerRotation.x);
+        PlayerPrefs.SetFloat("pry", sceneData.playerRotation.y);
+        PlayerPrefs.SetFloat("prz", sceneData.playerRotation.z);
+        PlayerPrefs.SetFloat("prw", sceneData.playerRotation.w);
+
+        PlayerPrefs.SetInt("php", sceneData.playerHealth);
     }
 }
